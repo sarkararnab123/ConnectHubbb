@@ -1,21 +1,30 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom";
+import { setUserData } from '../redux/userSlice';
+import axios from "axios"
+import { serverUrl } from '../App';
 
 const Signup = () => {
 
     const [ShowPassword , setShowPassword] = useState(false)
+    const [ShowLoading , setShowLoading] = useState(false)
+
     const navigate = useNavigate();
     const [userName,setUserName] = useState("")
     const [password,setpassword] = useState("")
 
+    const dispatch = useDispatch();
 
-        const handleLogin = async(e)=>{
+
+    const handleLogin = async(e)=>{
         setShowLoading(true)
         e.preventDefault()
         try {
             const result = await axios.post(`${serverUrl}/api/auth/login`,
                 {userName,password},{withCredentials:true}
             )
+            dispatch(setUserData(result.data))
             console.log(result.data)
             setShowLoading(false)
             setUserName("")

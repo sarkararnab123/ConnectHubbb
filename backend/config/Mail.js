@@ -1,8 +1,8 @@
-import nodeMailer from "nodemailer"
+import nodemailer from "nodemailer"
 import dotenv from "dotenv"
-dotenv.congig();
+dotenv.config();
 
-export const transporter = nodeMailer.createTransport({
+export const transporter = nodemailer.createTransport({
 
   service: "Gamil",
   port: 465,
@@ -14,8 +14,8 @@ export const transporter = nodeMailer.createTransport({
 });
 
 export const sendMail = async(to,otp)=>{
-    transporter.sendMail({
-        from:process.env.EMAIL,
+    await transporter.sendMail({
+        from:`${process.env.EMAIL}`,
         to:to,
         subject:"REset your password",
         html:`<p>Your otp for password reset is <b>${otp}</b>

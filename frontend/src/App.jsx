@@ -3,14 +3,22 @@ import { Route, Routes } from 'react-router-dom'
 import Signup from './pages/Signup'
 import Login from './pages/Login'
 import ForgotPassword from './pages/ForgotPassword'
+import Home from './pages/Home'
+import { useSelector } from 'react-redux'
+import getCurrentUser from './hooks/getCurrentUser'
 export const serverUrl = "http://localhost:8000"
+import { Navigate } from 'react-router-dom'
+
 
 const App = () => {
+  getCurrentUser()
+  const {userData} = useSelector(state=>state.user)
   return (
     <Routes>
-      <Route path='/signup' element={<Signup/>}></Route>
-      <Route path='/login' element={<Login/>}></Route>
+      <Route path='/signup' element={!userData?<Signup/>:<Navigate to={"/"}/>}></Route>
+      <Route path='/login' element={!userData?<Login/>:<Navigate to = {'/'}/>}></Route>
       <Route path='/forgotpassword' element={<ForgotPassword/>}></Route>
+      <Route path='/' element={userData?<Home/>:<Navigate to={"/signup"}/>}></Route>
     </Routes>
     
   )
