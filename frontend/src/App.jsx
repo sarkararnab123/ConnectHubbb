@@ -8,10 +8,12 @@ import { useSelector } from 'react-redux'
 import getCurrentUser from './hooks/getCurrentUser'
 export const serverUrl = "http://localhost:8000"
 import { Navigate } from 'react-router-dom'
+import getSuggestedUser from './hooks/getSuggestedUsers'
 
 
 const App = () => {
   getCurrentUser()
+  getSuggestedUser()
   const {userData} = useSelector(state=>state.user)
   return (
     <Routes>
