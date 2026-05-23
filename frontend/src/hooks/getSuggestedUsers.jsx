@@ -14,7 +14,8 @@ const getSuggestedUser = () => {
                 const result = await axios.get(`${serverUrl}/api/user/suggestedusers`,{withCredentials:true})
                 dispatch(setSuggestedUser(result.data))
             } catch (error) {
-                console.log(error)
+            console.log(error.response);
+            console.log(error.response?.data);
             }
         }
         fetchUser()

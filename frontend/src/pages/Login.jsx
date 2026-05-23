@@ -18,8 +18,8 @@ const Signup = () => {
 
 
     const handleLogin = async(e)=>{
-        setShowLoading(true)
         e.preventDefault()
+        setShowLoading(true)
         try {
             const result = await axios.post(`${serverUrl}/api/auth/login`,
                 {userName,password},{withCredentials:true}
@@ -31,7 +31,8 @@ const Signup = () => {
             setpassword("")
         } catch (error) {
             setShowLoading(false)
-            console.log(error);
+            console.log(error.response);
+            console.log(error.response?.data);
         }
     }
 

@@ -9,6 +9,7 @@ import getCurrentUser from './hooks/getCurrentUser'
 export const serverUrl = "http://localhost:8000"
 import { Navigate } from 'react-router-dom'
 import getSuggestedUser from './hooks/getSuggestedUsers'
+import Profile from './pages/Profile'
 
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
       <Route path='/login' element={!userData?<Login/>:<Navigate to = {'/'}/>}></Route>
       <Route path='/forgotpassword' element={<ForgotPassword/>}></Route>
       <Route path='/' element={userData?<Home/>:<Navigate to={"/signup"}/>}></Route>
+      <Route path='/profile/:userName' element={userData?<Profile/>:<Navigate to={"/signup"}/>}></Route>
     </Routes>
     
   )

@@ -26,12 +26,12 @@ const LeftHome = () => {
     bg-black border-r-2 border-gray-900'>
     <div className='w-full h-[100.1px] flex items-center justify-between p-[20.1px]'>
         <div>
-            <h2 className='text-white text-2xl font-bold'>ConnectHub</h2>
+            <h2 className='text-violet-700 text-3xl font-bold'>ConnectHub</h2>
         </div>
         <div>
             <IoIosNotifications className='text-white text-2xl ' />
         </div>
-        </div>
+    </div>
 
         {/* 2nd part */}
 
