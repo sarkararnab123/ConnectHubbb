@@ -77,7 +77,9 @@ const Profile = () => {
 
     <div className='w-full h-[80.1px] flex justify-center items-center gap-[20.1px]'>
          {profileData?._id == userData._id && 
-            <button className='px-[10.1px] min-w-[150.1px] py-[5.1px] h-[40.1px] bg-white cursor-pointer rounded-2xl'>
+            <button className='px-[10.1px] min-w-[150.1px] py-[5.1px] h-[40.1px] bg-white cursor-pointer rounded-2xl'
+                onClick={()=>navigate("/editprofile")}
+            >
             Edit Profile</button>
          }
 

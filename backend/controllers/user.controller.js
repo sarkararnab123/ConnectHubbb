@@ -27,7 +27,7 @@ export const suggestedUsers = async(req , res)=>{
 
 export const editProfile = async(req , res)=>{
    try {
-      const{name,userName,bio,profession,genser} = req.body;
+      const{name,userName,bio,profession,gender} = req.body;
       const user = await User.findById(req.userId).select("-password")
       if(!user){
          return res.status(400).json({message:"user not found"})
